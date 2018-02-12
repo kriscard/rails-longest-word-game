@@ -1,15 +1,6 @@
 <div class="container">
   <h1>Results</h1>
-  <p> <%@result%>
+  <p> <%=@getanswer%></p>
 
   <p><%= link_to "Play again", :new %></p>
 </div>
-
-
-<!--
-fetch("https://wagon-dictionary.herokuapp.com/")
-  .then(response => response.json())
-  .then((data) => {
-    console.log(data);
-  }); %>
--->

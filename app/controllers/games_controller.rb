@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'json'
+
 class GamesController < ApplicationController
   def new
     # @letters = (("A"..."Z").to_a).sample(10).join(' ');
@@ -9,16 +12,17 @@ class GamesController < ApplicationController
   end
 
 def score_and_message(attempt, grid, time)
-  if included?(attempt.upcase, grid)
+  @getanswer = if included?(attempt.upcase, grid)
     if english_word?(attempt)
       score = compute_score(attempt, time)
-      [score, "well done"]
+      [score.round(1), "well done"]
     else
       [0, "not an english word"]
     end
   else
     [0, "not in the grid"]
   end
+  @getanswer
   end
 
 def run_game(attempt, grid, start_time, end_time)
